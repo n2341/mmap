@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">mmap</string>
+    <string name="app_name">اسم التطبيق</string>
+    <string name="Must">يجب</string>
+
 </resources>
