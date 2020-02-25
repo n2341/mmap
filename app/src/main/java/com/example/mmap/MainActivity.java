@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         switch (itemId) {
             case R.id.jiddah:
                 startActivity(new Intent(this, firsstAcyivity.class));
+return true;
+
+            case R.id.list:
+                startActivity(new Intent(this,listview.class));
                 return true;
             default:
 

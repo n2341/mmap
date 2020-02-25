@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".secondActivity"></activity>
+        <activity android:name=".listview"></activity>
+
+        <activity android:name=".secondActivity" />
         <activity android:name=".firsstAcyivity" />
         <activity android:name=".DisplayMessageActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+            <activity android:name=".screen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,6 +6,9 @@
         android:id="@+id/jiddah"
         android:title="Item" />
     <item
-        android:id="@+id/jiddah2"
-        android:title="item1m2" />
+        android:id="@+id/list"
+        android:title="ListView" />
+    <item
+        android:id="@+id/cp"
+        android:title="program" />
 </menu>
