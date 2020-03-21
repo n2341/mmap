@@ -4,11 +4,18 @@
 
     <item
         android:id="@+id/jiddah"
-        android:title="Item" />
+        android:title="Music" />
     <item
         android:id="@+id/list"
         android:title="ListView" />
     <item
         android:id="@+id/cp"
-        android:title="program" />
+        android:title="Read C File" />
+    <item
+        android:id="@+id/call"
+        android:title="call phone" />
+    <item
+        android:id="@+id/mail"
+        android:title="send mail" />
+
 </menu>
