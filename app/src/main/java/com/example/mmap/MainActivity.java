@@ -13,18 +13,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button start,stop;
+    private static final String FILE_NAME="JIDDA.txt";
+    EditText internal;
     private BroadcastReceiver mybroadcast = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -42,9 +55,67 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         registerReceiver(mybroadcast,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+//        MediaPlayer player=MediaPlayer.create(this,Settings.System.DEFAULT_RINGTONE_URI);
+//        player.setLooping(true);
+//        player.start();
+        internal= findViewById(R.id.txtenter);
+        start=(Button)findViewById(R.id.startservice);
+        stop=(Button)findViewById(R.id.stopservice);
+        start.setOnClickListener(this);
+        stop.setOnClickListener(this);
+
+
 }
+public void save(View view){
+String text=internal.getText().toString();
+    FileOutputStream fos=null;
+    try {
+        fos=openFileOutput(FILE_NAME,MODE_PRIVATE);
+        fos.write(text.getBytes());
+        internal.getText().clear();
+        Toast.makeText(this,"saved to " + getFilesDir()+ "/"+FILE_NAME,Toast.LENGTH_LONG).show();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }finally {
+        if (fos != null){
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+public  void load(View view){
+    FileInputStream fis=null;
+    try {
+        fis=openFileInput(FILE_NAME);
+        InputStreamReader isr=new InputStreamReader(fis);
+        BufferedReader br=new BufferedReader(isr);
+        StringBuilder sb=new StringBuilder();
+        String text;
+        while ((text = br.readLine()) !=null){
+            sb.append(text).append("/n");
+        }
+        internal.setText(sb.toString());
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    finally {
+        if (fis !=null){
+            try {
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-
+}
     public void sendMessage(View view){
         EditText message= (EditText) findViewById(R.id.message);
         Toast.makeText(this,"sending message"+message.getText().toString(),Toast.LENGTH_SHORT);
@@ -84,18 +155,18 @@ public class MainActivity extends AppCompatActivity {
         switch (itemId) {
             case R.id.jiddah:
                 startActivity(new Intent(this, firsstAcyivity.class));
-return true;
+                return true;
 
             case R.id.list:
-                startActivity(new Intent(this,listview.class));
+                startActivity(new Intent(this, listview.class));
                 return true;
             case R.id.cp:
-                startActivity(new Intent(this,secondActivity.class));
+                startActivity(new Intent(this, secondActivity.class));
                 return true;
             case R.id.mail:
                 Intent h = new Intent(Intent.ACTION_SEND);
                 h.setData(Uri.parse("mailto"));
-                String to [] = {"mupatt@gmail.com","nankundjiddah@gmail.com","bryntu9@gmail.com"};
+                String to[] = {"mupatt@gmail.com", "nankundjiddah@gmail.com", "bryntu9@gmail.com"};
                 h.putExtra(Intent.EXTRA_EMAIL, to);
                 h.putExtra(Intent.EXTRA_SUBJECT, "Testing");
                 h.putExtra(Intent.EXTRA_TEXT, "Have i made it? Great day!!");
@@ -121,12 +192,11 @@ return true;
 
                             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
 
-                            }
+                        }
                     }
                     Intent obj = new Intent(Intent.ACTION_CALL, Uri.parse("tel:0759630945"));
                     startActivity(obj);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 return true;
@@ -134,6 +204,16 @@ return true;
 
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view==start){
+startService(new Intent(this,Myservice.class));
+        }else if (view==stop){
+            stopService(new Intent(this,Myservice.class));
+        }
+
     }
 }
 
