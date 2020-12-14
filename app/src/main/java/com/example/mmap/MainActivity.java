@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -35,6 +37,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    Button btnsave;
+    EditText etinput;
+    String filename="";
+    String filepath="";
+    String filecontent="";
+
     private Button start,stop;
     private static final String FILE_NAME="JIDDA.txt";
     EditText internal;
@@ -54,6 +62,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnsave=findViewById(R.id.btnsave);
+        etinput=findViewById(R.id.etinput);
+        filename="myFile.text";
+        filepath="MyFileDir";
+        if(isExternalStorageAvailableForRW()){
+            btnsave.setEnabled(true);
+        }
+        btnsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filecontent=etinput.getText().toString().trim();
+                if (!filecontent.equals("")){
+                    File myExternalFile=new File(getExternalFilesDir(filepath),filename);
+                    FileOutputStream fos=null;
+                    try {
+                        fos=new FileOutputStream(myExternalFile);
+                        fos.write(filecontent.getBytes());
+                    }catch (FileNotFoundException e){
+                        e.printStackTrace();
+
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+                    etinput.setText("");
+                    Toast.makeText(getApplicationContext(),"saved on the External Memory",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Text field can't be empty",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+
+
+
+
         registerReceiver(mybroadcast,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 //        MediaPlayer player=MediaPlayer.create(this,Settings.System.DEFAULT_RINGTONE_URI);
 //        player.setLooping(true);
@@ -66,6 +112,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 }
+    public boolean isExternalStorageAvailableForRW(){
+        String extStorage=Environment.getExternalStorageState();
+        if(extStorage.equals(Environment.MEDIA_MOUNTED)){
+            return  true;
+        }
+        return false;
+    }
+
+
 public void save(View view){
 String text=internal.getText().toString();
     FileOutputStream fos=null;
