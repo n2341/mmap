@@ -125,7 +125,7 @@
         android:text="START SERVICE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/batteryView"
+
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -174,7 +174,17 @@
             android:onClick="load"
 
             />
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
 
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="204dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/battery" />
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -211,11 +221,7 @@
 
 
    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="600dp"
+
     <TextView
         android:id="@+id/batteryView"
         android:layout_width="wrap_content"
@@ -230,20 +236,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress" />
 
-    <ProgressBar
-        android:id="@+id/progress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:hut_marginStart="159dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="204dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/battery" />
 
 
-</LinearLayout>
+
+
 
 
 

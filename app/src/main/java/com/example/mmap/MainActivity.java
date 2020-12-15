@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnsave=findViewById(R.id.btnsave);
+        btnsave=findViewById(R.id.btnexternal);
         etinput=findViewById(R.id.etinput);
         filename="myFile.text";
         filepath="MyFileDir";
