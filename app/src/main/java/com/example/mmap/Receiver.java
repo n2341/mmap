@@ -15,7 +15,9 @@ public class Receiver extends BroadcastReceiver {
         toast.show();
 
         Vibrator vibrator=(Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(6000);
+        if (vibrator != null) {
+            vibrator.vibrate(6000);
+        }
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

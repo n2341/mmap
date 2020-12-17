@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -47,14 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String FILE_NAME="JIDDA.txt";
     EditText internal;
     private BroadcastReceiver mybroadcast = new BroadcastReceiver() {
+        @SuppressLint("SetTextI18n")
         @Override
         public void onReceive(Context context, Intent intent) {
             int level = intent.getIntExtra("level",0);
-            ProgressBar progressBar = (ProgressBar)findViewById(R.id.progress);
+            ProgressBar progressBar = findViewById(R.id.progress);
             progressBar.setProgress(level);
 
-            TextView textView = (TextView)findViewById(R.id.batteryView);
-            textView.setText("Battery level is:" + Integer.toString(level) + "%");
+            TextView textView = findViewById(R.id.batteryView);
+            textView.setText("Battery level is:" + level + "%");
         }
     };
 
@@ -105,8 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        player.setLooping(true);
 //        player.start();
         internal= findViewById(R.id.txtenter);
-        start=(Button)findViewById(R.id.startservice);
-        stop=(Button)findViewById(R.id.stopservice);
+        start= findViewById(R.id.startservice);
+        stop= findViewById(R.id.stopservice);
         start.setOnClickListener(this);
         stop.setOnClickListener(this);
 
@@ -114,10 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 }
     public boolean isExternalStorageAvailableForRW(){
         String extStorage=Environment.getExternalStorageState();
-        if(extStorage.equals(Environment.MEDIA_MOUNTED)){
-            return  true;
-        }
-        return false;
+        return extStorage.equals(Environment.MEDIA_MOUNTED);
     }
 
 
@@ -172,7 +171,7 @@ public  void load(View view){
 
 }
     public void sendMessage(View view){
-        EditText message= (EditText) findViewById(R.id.message);
+        EditText message= findViewById(R.id.message);
         Toast.makeText(this,"sending message"+message.getText().toString(),Toast.LENGTH_SHORT);
         Intent intent=new Intent(this,DisplayMessageActivity.class);
         intent.putExtra("MESSAGE",message.getText().toString());
@@ -180,7 +179,7 @@ public  void load(View view){
         message.setText("");
     }
     public void startAlert(View view){
-        EditText text=(EditText)findViewById(R.id.arm);
+        EditText text= findViewById(R.id.arm);
         int obj = Integer.parseInt(text.getText().toString());
 
         //Create an intent and call your receiver
@@ -221,7 +220,7 @@ public  void load(View view){
             case R.id.mail:
                 Intent h = new Intent(Intent.ACTION_SEND);
                 h.setData(Uri.parse("mailto"));
-                String to[] = {"mupatt@gmail.com", "nankundjiddah@gmail.com", "bryntu9@gmail.com"};
+                String[] to = {"mupatt@gmail.com", "nankundjiddah@gmail.com", "bryntu9@gmail.com"};
                 h.putExtra(Intent.EXTRA_EMAIL, to);
                 h.putExtra(Intent.EXTRA_SUBJECT, "Testing");
                 h.putExtra(Intent.EXTRA_TEXT, "Have i made it? Great day!!");
