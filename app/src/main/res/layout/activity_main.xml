@@ -6,241 +6,232 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/battery"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:text="Hello World!"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
-
-    <TextView
-        android:id="@+id/edit_query"
-        android:layout_width="239dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="170dp"
-        android:text="Message"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344" />
-
-    <EditText
-        android:id="@+id/message"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="220dp"
-        android:hint="Enter message"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
-
-    <Button
-        android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="230dp"
-        android:layout_marginTop="220dp"
-        android:onClick="sendMessage"
-        android:text="send"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
 
-    <TextView
-        android:id="@+id/must"
-        android:layout_width="150dp"
-        android:layout_height="33dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="370dp"
-        android:layout_marginBottom="156dp"
-        android:text="@string/Must"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.874"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="20sp"
+        app:cardBackgroundColor="#CFEAB1">
 
-    <EditText
-        android:id="@+id/arm"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="270dp"
-        android:ems="10"
-        android:hint="Number of seconds"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
+        <TextView
+            android:id="@+id/battery"
+            android:layout_width="200sp"
+            android:layout_height="50sp"
+            android:layout_marginLeft="50sp"
+            android:layout_marginTop="50sp"
+            android:text="Hello World!"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.036"
+            tools:ignore="RtlHardcoded" />
 
-    <Button
-        android:id="@+id/am"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="230dp"
-        android:layout_marginTop="270dp"
-        android:onClick="startAlert"
-        android:text="Alarm"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.579" />
+        <TextView
+            android:id="@+id/edit_query"
+            android:layout_width="239sp"
+            android:layout_height="40sp"
+            android:layout_marginLeft="100sp"
+            android:layout_marginTop="170sp"
+            android:text="Message"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
 
-    <Button
-        android:id="@+id/startservice"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.087"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.344"
+            tools:ignore="RtlHardcoded" />
 
-        android:layout_marginTop="320dp"
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="150sp"
+            android:layout_height="33sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="220sp"
+            android:background="@drawable/textfielddesign"
+            android:hint="Enter message"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.477" />
 
-        android:layout_marginRight="200dp"
-        android:text="START SERVICE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_marginLeft="230sp"
+            android:layout_marginTop="220sp"
+            android:background="@drawable/designbutton"
+            android:onClick="sendMessage"
+            android:text="send"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.842"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.456" />
 
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/must"
+            android:layout_width="150sp"
+            android:layout_height="33sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="530sp"
+            android:layout_marginBottom="156sp"
+            android:text="@string/Must"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.874"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/stopservice"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="320dp"
-        android:text="STOP SERVICE"
-        app:layout_constraintBottom_toTopOf="@+id/must"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/startservice"
-        app:layout_constraintTop_toBottomOf="@+id/am" />
+        <EditText
+            android:id="@+id/arm"
+            android:layout_width="180sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="270sp"
+            android:background="@drawable/textfielddesign"
+            android:ems="10"
+            android:hint="Number of seconds"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.581" />
 
+        <Button
+            android:id="@+id/am"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_marginLeft="230sp"
+            android:layout_marginTop="270sp"
+            android:background="@android:drawable/ic_lock_idle_alarm"
+            android:onClick="startAlert"
+            android:text="Alarm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.579" />
 
+        <Button
+            android:id="@+id/startservice"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="20sp"
+
+            android:layout_marginTop="320sp"
+            android:layout_marginRight="200sp"
+
+            android:background="@drawable/designbutton"
+            android:text="START SERVICE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/stopservice"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="200sp"
+            android:layout_marginTop="320sp"
+            android:background="@drawable/redbutton"
+            android:text="STOP SERVICE"
+            app:layout_constraintBottom_toTopOf="@+id/must"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/startservice"
+            app:layout_constraintTop_toBottomOf="@+id/am" />
 
 
         <EditText
             android:id="@+id/txtenter"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_width="250sp"
+            android:layout_height="30sp"
 
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="370dp"
-            android:hint="Enter the text to store"
-            />
+            android:layout_marginLeft="50sp"
+            android:layout_marginTop="370sp"
+            android:background="@drawable/textfielddesign"
+            android:hint="Enter the text to store" />
 
         <Button
             android:id="@+id/btnsave"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="420dp"
-            android:text="STORE DOCUMENT"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="50sp"
+            android:layout_marginTop="420sp"
+            android:background="@android:drawable/ic_menu_save"
             android:onClick="save"
+            android:text="STORE DOCUMENT"
 
             />
 
         <Button
             android:id="@+id/btnload"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="420dp"
-            android:text="LOAD DOCUMENT"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="200sp"
+            android:layout_marginTop="420sp"
+            android:background="@drawable/designbutton"
             android:onClick="load"
+            android:text="LOAD DOCUMENT"
 
             />
-    <ProgressBar
-        android:id="@+id/progress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnEXTERNAL"
+            android:layout_width="120sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="200sp"
+            android:layout_marginTop="480sp"
+            android:background="@drawable/redbutton"
+            android:onClick="loadEXTERNAL"
+            android:text="External storage"
 
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="204dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/battery" />
+            />
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical"
-       android:layout_marginTop="500dp"
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
 
-
-       >
-       <EditText
-           android:id="@+id/etinput"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:hint="put here your message"
-
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toEndOf="@+id/btnsave"
-           app:layout_constraintTop_toBottomOf="@+id/btnsave" />
-
-       <Button
-           android:id="@+id/btnexternal"
-           android:layout_width="wrap_content"
-           android:layout_height="50dp"
-           android:layout_marginStart="15dp"
-           android:layout_marginEnd="15dp"
-           android:layout_marginRight="10dp"
-           android:layout_weight="1"
-           android:text="External"
-           android:layout_marginTop="10dp"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="1.0"
-           app:layout_constraintStart_toEndOf="@+id/btnsave"
-           app:layout_constraintTop_toBottomOf="@+id/btnsave" />
+            android:layout_marginLeft="150sp"
+            android:layout_marginTop="140sp"
+            android:layout_marginEnd="204sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/battery" />
 
 
-   </LinearLayout>
-
-    <TextView
-        android:id="@+id/batteryView"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="134dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="157dp"
-        android:text="Battery"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress" />
+        <TextView
+            android:id="@+id/batteryView"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp"
+            android:layout_marginStart="134sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="100sp"
+            android:layout_marginEnd="157sp"
+            android:text="Battery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress" />
 
 
-
-
-
-
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

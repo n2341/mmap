@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudentContentProvider"/>
+        <activity android:name=".ExternalStorage"/>
+        <activity android:name=".StudentContentProvider" />
         <activity android:name=".contentProvider" />
         <activity android:name=".listview" />
         <activity android:name=".secondActivity" />
@@ -31,8 +34,7 @@
 
         <provider
             android:name=".contentProvider"
-            android:authorities="com.example.mmap"
-            />
+            android:authorities="com.example.mmap" />
     </application>
 
 </manifest>

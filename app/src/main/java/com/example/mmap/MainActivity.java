@@ -38,11 +38,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnsave;
-    EditText etinput;
-    String filename="";
-    String filepath="";
-    String filecontent="";
+
 
     private Button start,stop;
     private static final String FILE_NAME="JIDDA.txt";
@@ -65,47 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnsave=findViewById(R.id.btnexternal);
-        etinput=findViewById(R.id.etinput);
-        filename="myFile.text";
-        filepath="MyFileDir";
-        if(isExternalStorageAvailableForRW()){
-            btnsave.setEnabled(true);
-        }
-        btnsave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filecontent=etinput.getText().toString().trim();
-                if (!filecontent.equals("")){
-                    File myExternalFile=new File(getExternalFilesDir(filepath),filename);
-                    FileOutputStream fos=null;
-                    try {
-                        fos=new FileOutputStream(myExternalFile);
-                        fos.write(filecontent.getBytes());
-                    }catch (FileNotFoundException e){
-                        e.printStackTrace();
-
-                    }catch (IOException e){
-                        e.printStackTrace();
-                    }
-                    etinput.setText("");
-                    Toast.makeText(getApplicationContext(),"saved on the External Memory",Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getApplicationContext(),"Text field can't be empty",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-
-
-
-
-
         registerReceiver(mybroadcast,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-//        MediaPlayer player=MediaPlayer.create(this,Settings.System.DEFAULT_RINGTONE_URI);
-//        player.setLooping(true);
-//        player.start();
+
         internal= findViewById(R.id.txtenter);
         start= findViewById(R.id.startservice);
         stop= findViewById(R.id.stopservice);
@@ -114,11 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 }
-    public boolean isExternalStorageAvailableForRW(){
-        String extStorage=Environment.getExternalStorageState();
-        return extStorage.equals(Environment.MEDIA_MOUNTED);
-    }
-
 
 public void save(View view){
 String text=internal.getText().toString();
@@ -172,7 +124,7 @@ public  void load(View view){
 }
     public void sendMessage(View view){
         EditText message= findViewById(R.id.message);
-        Toast.makeText(this,"sending message"+message.getText().toString(),Toast.LENGTH_SHORT);
+        Toast.makeText(this,"sending message"+message.getText().toString(),Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(this,DisplayMessageActivity.class);
         intent.putExtra("MESSAGE",message.getText().toString());
         startActivity(intent);
@@ -193,6 +145,7 @@ public  void load(View view){
 
         //Real time clock to be used
 
+        assert alarmManager != null;
         alarmManager.set(AlarmManager.RTC_WAKEUP,System.currentTimeMillis() + (obj * 1000),pendingIntent);
         Toast.makeText(this,"Alarm set in" + obj + "seconds",Toast.LENGTH_LONG).show();
     }
@@ -268,6 +221,11 @@ startService(new Intent(this,Myservice.class));
             stopService(new Intent(this,Myservice.class));
         }
 
+    }
+
+    public void loadEXTERNAL(View view) {
+        Intent intent=new Intent(this,ExternalStorage.class);
+        startActivity(intent);
     }
 }
 
